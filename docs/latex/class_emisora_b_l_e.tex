@@ -1,0 +1,61 @@
+\doxysection{Emisora\+BLE Class Reference}
+\hypertarget{class_emisora_b_l_e}{}\label{class_emisora_b_l_e}\index{EmisoraBLE@{EmisoraBLE}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_emisora_b_l_e_a922f7f1ab1063eb40c99e4a3676be258}\label{class_emisora_b_l_e_a922f7f1ab1063eb40c99e4a3676be258} 
+using {\bfseries Callback\+Conexion\+Establecida} = void(uint16\+\_\+t conn\+Handle)
+\item 
+\Hypertarget{class_emisora_b_l_e_afd6faaf6a924a50ea027046703300b0b}\label{class_emisora_b_l_e_afd6faaf6a924a50ea027046703300b0b} 
+using {\bfseries Callback\+Conexion\+Terminada} = void(uint16\+\_\+t conn\+Handle, uint8\+\_\+t reason)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_emisora_b_l_e_ae2e94b95bde4cddf0038deb0368cc5bf}\label{class_emisora_b_l_e_ae2e94b95bde4cddf0038deb0368cc5bf} 
+{\bfseries Emisora\+BLE} (const char \texorpdfstring{$\ast$}{*}nombre\+Emisora\+\_\+, const uint16\+\_\+t fabricante\+ID\+\_\+, const int8\+\_\+t tx\+Power\+\_\+)
+\item 
+\Hypertarget{class_emisora_b_l_e_a31f9c768b91b9e353f693f509af3ea73}\label{class_emisora_b_l_e_a31f9c768b91b9e353f693f509af3ea73} 
+void {\bfseries encender\+Emisora} ()
+\item 
+\Hypertarget{class_emisora_b_l_e_ada243f2f1185a7d66ea33de6bdb06590}\label{class_emisora_b_l_e_ada243f2f1185a7d66ea33de6bdb06590} 
+void {\bfseries encender\+Emisora} (Callback\+Conexion\+Establecida cbce, Callback\+Conexion\+Terminada cbct)
+\item 
+\Hypertarget{class_emisora_b_l_e_aeede390b7a6502baecb48e9db77120b4}\label{class_emisora_b_l_e_aeede390b7a6502baecb48e9db77120b4} 
+void {\bfseries detener\+Anuncio} ()
+\item 
+\Hypertarget{class_emisora_b_l_e_ac32548698cf69ecef9e96941fc2e1b94}\label{class_emisora_b_l_e_ac32548698cf69ecef9e96941fc2e1b94} 
+bool {\bfseries esta\+Anunciando} ()
+\item 
+\Hypertarget{class_emisora_b_l_e_aff23b85351177e685353b1ee92a1558f}\label{class_emisora_b_l_e_aff23b85351177e685353b1ee92a1558f} 
+void {\bfseries emitir\+Anuncio\+IBeacon} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}beacon\+UUID, int16\+\_\+t major, int16\+\_\+t minor, uint8\+\_\+t rssi)
+\item 
+\Hypertarget{class_emisora_b_l_e_a8439d1e85ec8d630fcd33b01d8987d41}\label{class_emisora_b_l_e_a8439d1e85ec8d630fcd33b01d8987d41} 
+void {\bfseries emitir\+Anuncio\+IBeacon\+Libre} (const char \texorpdfstring{$\ast$}{*}carga, const uint8\+\_\+t tamanyo\+Carga)
+\item 
+\Hypertarget{class_emisora_b_l_e_a0f027a1c447357c5fe79200b36451731}\label{class_emisora_b_l_e_a0f027a1c447357c5fe79200b36451731} 
+bool {\bfseries anyadir\+Servicio} (\mbox{\hyperlink{class_servicio_en_emisora}{Servicio\+En\+Emisora}} \&servicio)
+\item 
+\Hypertarget{class_emisora_b_l_e_a074a16066fc8ae37567a342e3df63bf5}\label{class_emisora_b_l_e_a074a16066fc8ae37567a342e3df63bf5} 
+bool {\bfseries anyadir\+Servicio\+Con\+Sus\+Caracteristicas} (\mbox{\hyperlink{class_servicio_en_emisora}{Servicio\+En\+Emisora}} \&servicio)
+\item 
+\Hypertarget{class_emisora_b_l_e_aa589659b63ae877910eab1b39a93a339}\label{class_emisora_b_l_e_aa589659b63ae877910eab1b39a93a339} 
+{\footnotesize template$<$typename ... T$>$ }\\bool {\bfseries anyadir\+Servicio\+Con\+Sus\+Caracteristicas} (\mbox{\hyperlink{class_servicio_en_emisora}{Servicio\+En\+Emisora}} \&servicio, \mbox{\hyperlink{class_servicio_en_emisora_1_1_caracteristica}{Servicio\+En\+Emisora\+::\+Caracteristica}} \&caracteristica, T \&... resto\+Caracteristicas)
+\item 
+\Hypertarget{class_emisora_b_l_e_a0a0673823174ce9ffb96fb1c0dfb11ab}\label{class_emisora_b_l_e_a0a0673823174ce9ffb96fb1c0dfb11ab} 
+{\footnotesize template$<$typename ... T$>$ }\\bool {\bfseries anyadir\+Servicio\+Con\+Sus\+Caracteristicas\+YActivar} (\mbox{\hyperlink{class_servicio_en_emisora}{Servicio\+En\+Emisora}} \&servicio, T \&... resto\+Caracteristicas)
+\item 
+\Hypertarget{class_emisora_b_l_e_ae15e223776af83a8cac07564c168d0b9}\label{class_emisora_b_l_e_ae15e223776af83a8cac07564c168d0b9} 
+void {\bfseries instalar\+Callback\+Conexion\+Establecida} (Callback\+Conexion\+Establecida cb)
+\item 
+\Hypertarget{class_emisora_b_l_e_a2bb6b319046a10641619c1388f7fe351}\label{class_emisora_b_l_e_a2bb6b319046a10641619c1388f7fe351} 
+void {\bfseries instalar\+Callback\+Conexion\+Terminada} (Callback\+Conexion\+Terminada cb)
+\item 
+\Hypertarget{class_emisora_b_l_e_aa863c5f29e1f0d4dd1ae023b30350960}\label{class_emisora_b_l_e_aa863c5f29e1f0d4dd1ae023b30350960} 
+BLEConnection \texorpdfstring{$\ast$}{*} {\bfseries get\+Conexion} (uint16\+\_\+t conn\+Handle)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Emisora\+BLE.\+h\end{DoxyCompactItemize}

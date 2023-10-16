@@ -1,0 +1,55 @@
+\doxysection{Puerto\+Serie.\+h}
+\hypertarget{_puerto_serie_8h_source}{}\label{_puerto_serie_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ -\/*-\/\ mode:\ c++\ -\/*-\/}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Hugo\ Martin\ Escrihuela}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 08-\/10-\/2023}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ PUERTO\_SERIE\_H\_INCLUIDO}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ PUERTO\_SERIE\_H\_INCLUIDO}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_puerto_serie}{PuertoSerie}}\ \ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \textcolor{comment}{//\ .........................................................}}
+\DoxyCodeLine{00018\ \ \ \textcolor{comment}{//\ \ \ N\ -\/-\/>\ constructor()}}
+\DoxyCodeLine{00019\ \ \ \textcolor{comment}{//\ .........................................................}}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{class_puerto_serie}{PuertoSerie}}\ (\textcolor{keywordtype}{long}\ baudios)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ Serial.begin(\ baudios\ );}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ mejor\ no\ poner\ esto\ aquí:\ while\ (\ !Serial\ )\ delay(10);\ \ \ }}
+\DoxyCodeLine{00023\ \ \ \}\ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \textcolor{comment}{//\ .........................................................}}
+\DoxyCodeLine{00026\ \ \ \textcolor{comment}{//\ \ \ esperarDisponible()}}
+\DoxyCodeLine{00027\ \ \ \textcolor{comment}{//\ .........................................................}}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ esperarDisponible()\ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ !Serial\ )\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ delay(10);\ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \}\ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{comment}{//\ .........................................................}}
+\DoxyCodeLine{00037\ \ \ \textcolor{comment}{//\ \ \ T\ -\/-\/>\ escribir()}}
+\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//\ .........................................................}}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ escribir\ (T\ mensaje)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ Serial.print(\ mensaje\ );}
+\DoxyCodeLine{00042\ \ \ \}\ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00043\ \ \ }
+\DoxyCodeLine{00044\ \};\ \textcolor{comment}{//\ class\ PuertoSerie}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

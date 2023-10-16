@@ -1,0 +1,57 @@
+\doxysection{Publicador Class Reference}
+\hypertarget{class_publicador}{}\label{class_publicador}\index{Publicador@{Publicador}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_publicador_a0dbad8398e97eaf1d6ecdd854f286d38}\label{class_publicador_a0dbad8398e97eaf1d6ecdd854f286d38} 
+enum {\bfseries Mediciones\+ID} \{ {\bfseries CO2} = 11
+, {\bfseries TEMPERATURA} = 12
+, {\bfseries RUIDO} = 13
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_publicador_a10f309e5dfd232d204c5d2952581fe16}\label{class_publicador_a10f309e5dfd232d204c5d2952581fe16} 
+void {\bfseries encender\+Emisora} ()
+\item 
+\Hypertarget{class_publicador_a2ed2009b9cec631024263659be882985}\label{class_publicador_a2ed2009b9cec631024263659be882985} 
+void {\bfseries publicar\+CO2} (int16\+\_\+t valor\+CO2, uint8\+\_\+t contador, long tiempo\+Espera)
+\item 
+\Hypertarget{class_publicador_a674ec7d8321b9792835cd935c6196dec}\label{class_publicador_a674ec7d8321b9792835cd935c6196dec} 
+void {\bfseries publicar\+Temperatura} (int16\+\_\+t valor\+Temperatura, uint8\+\_\+t contador, long tiempo\+Espera)
+\item 
+\Hypertarget{class_publicador_aac2f233601c30c1808563d0ca442fcac}\label{class_publicador_aac2f233601c30c1808563d0ca442fcac} 
+void {\bfseries publicar\+Temperatura\+Gas\+Id} (double valor\+Temperatura, double valor\+Gas, long tiempo\+Espera)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_emisora_b_l_e}{Emisora\+BLE}} \mbox{\hyperlink{class_publicador_a86ef036c1b64668ac54dfe87b595aec5}{la\+Emisora}}
+\item 
+\Hypertarget{class_publicador_a339fb2ba061a53478572ade00866408c}\label{class_publicador_a339fb2ba061a53478572ade00866408c} 
+const int {\bfseries RSSI} = -\/53
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_publicador_a86ef036c1b64668ac54dfe87b595aec5}\label{class_publicador_a86ef036c1b64668ac54dfe87b595aec5} 
+\index{Publicador@{Publicador}!laEmisora@{laEmisora}}
+\index{laEmisora@{laEmisora}!Publicador@{Publicador}}
+\doxysubsubsection{\texorpdfstring{laEmisora}{laEmisora}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_emisora_b_l_e}{Emisora\+BLE}} Publicador\+::la\+Emisora}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}GTI-\/3A"{}},\ }
+\DoxyCodeLine{\ \ \ \ \ \ 0x004c,\ }
+\DoxyCodeLine{\ \ \ \ \ \ 4\ }
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Publicador.\+h\end{DoxyCompactItemize}

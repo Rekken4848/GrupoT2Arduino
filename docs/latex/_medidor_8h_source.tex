@@ -1,0 +1,105 @@
+\doxysection{Medidor.\+h}
+\hypertarget{_medidor_8h_source}{}\label{_medidor_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ -\/*-\/\ mode:\ c++\ -\/*-\/}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Hugo\ Martin\ Escrihuela}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ 08-\/10-\/2023}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ MEDIDOR\_H\_INCLUIDO}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ MEDIDOR\_H\_INCLUIDO}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ pinVgas\ 5}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ pinVref\ 28}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ pinVtemp\ 29}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_medidor}{Medidor}}\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00022\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00028\ \ \ \textcolor{comment}{//\ constructor()}}
+\DoxyCodeLine{00029\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{class_medidor}{Medidor}}()\ \{}
+\DoxyCodeLine{00031\ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00034\ \ \ \textcolor{comment}{//\ \ \ iniciarMedidor()}}
+\DoxyCodeLine{00035\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ iniciarMedidor()\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ las\ cosas\ que\ no\ se\ puedan\ hacer\ en\ el\ constructor,\ if\ any}}
+\DoxyCodeLine{00038\ \ \ \ \ pinMode(pinVgas,\ INPUT);}
+\DoxyCodeLine{00039\ \ \ \ \ pinMode(pinVref,\ INPUT);}
+\DoxyCodeLine{00040\ \ \ \ \ pinMode(pinVtemp,\ INPUT);}
+\DoxyCodeLine{00041\ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00044\ \ \ \textcolor{comment}{//\ \ \ medirCO2()\ -\/-\/>\ R}}
+\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{double}\ medirCO2()\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ concentracionGas(general\_code\_to\_voltage(analogRead(pinVgas)),\ general\_code\_to\_voltage(analogRead(pinVref)));}
+\DoxyCodeLine{00048\ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00051\ \ \ \textcolor{comment}{//\ \ \ medirTemperatura()\ -\/-\/>\ R}}
+\DoxyCodeLine{00052\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{double}\ medirTemperatura()\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ temp(general\_code\_to\_voltage(analogRead(pinVtemp)));}
+\DoxyCodeLine{00055\ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00058\ \ \ \textcolor{comment}{//\ \ \ N\ -\/-\/>\ general\_code\_to\_voltage()\ -\/-\/>\ R}}
+\DoxyCodeLine{00059\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{double}\ general\_code\_to\_voltage(\textcolor{keywordtype}{int}\ pinValue)\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ (pinValue\ /\ pow(2,\ 12))\ *\ 3.3;}
+\DoxyCodeLine{00062\ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00065\ \ \ \textcolor{comment}{//\ \ \ R\ -\/-\/>\ temp()\ -\/-\/>\ R}}
+\DoxyCodeLine{00066\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{double}\ temp(\textcolor{keywordtype}{double}\ Vtemp)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{double}\ temperatura\ =\ (Vtemp\ *\ 87)\ -\/\ 18;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ Imprimir\ el\ valor\ de\ la\ temperatura\ en\ grados\ centigrados\ (ºC)}}
+\DoxyCodeLine{00071\ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}Temperatura:\ "{}});}
+\DoxyCodeLine{00072\ \ \ \ \ Serial.print(temperatura);}
+\DoxyCodeLine{00073\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ ºC"{}});}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordflow}{return}\ temperatura;}
+\DoxyCodeLine{00076\ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00079\ \ \ \textcolor{comment}{//\ \ \ R\ -\/-\/>\ concentracionGas()\ -\/-\/>\ R}}
+\DoxyCodeLine{00080\ \ \ \textcolor{comment}{//\ .....................................................}}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{double}\ concentracionGas(\textcolor{keywordtype}{double}\ Vgas,\ \textcolor{keywordtype}{double}\ Vref)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Factor\ de\ calibración\ proporcionado\ en\ el\ datasheet\ en\ nA/ppm}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{float}\ M\ =\ 4.94;\ \ \textcolor{comment}{//\ Este\ valor\ debe\ obtenerse\ del\ datasheet}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Realizar\ cálculos\ para\ convertir\ el\ voltaje\ a\ concentración\ de\ ozono\ según\ la\ fórmula\ Cx\ =\ (Vgas\ -\/\ Vgas0)\ /\ M}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{double}\ ozoneConcentration\ =\ ((Vgas\ -\/\ (Vref\ /\ 2))\ /\ M)\ *\ 1000;\ \ \textcolor{comment}{//\ Multiplicar\ por\ 1000\ para\ convertir\ de\ nA\ a\ µA\ y\ obtener\ ppm}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Imprimir\ el\ valor\ de\ la\ concentración\ de\ ozono\ en\ ppm\ (partes\ por\ millón)}}
+\DoxyCodeLine{00088\ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}Concentración\ de\ Ozono:\ "{}});}
+\DoxyCodeLine{00089\ \ \ \ \ Serial.print(ozoneConcentration);}
+\DoxyCodeLine{00090\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ ppm"{}});}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{return}\ ozoneConcentration;}
+\DoxyCodeLine{00093\ \ \ \}}
+\DoxyCodeLine{00094\ \};\ \ \textcolor{comment}{//\ class}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
