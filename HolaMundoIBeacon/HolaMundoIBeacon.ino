@@ -136,7 +136,7 @@ void loop () {
   // 
   // mido y publico
   // 
-  int valorCO2 = elMedidor.medirCO2();
+  /*int valorCO2 = elMedidor.medirCO2();
   
   elPublicador.publicarCO2( valorCO2,
 							cont,
@@ -151,7 +151,12 @@ void loop () {
   elPublicador.publicarTemperatura( valorTemperatura, 
 									cont,
 									1000 // intervalo de emisión
-									);
+									);*/
+
+  double valorGas = elMedidor.medirCO2();
+  double valorTemperatura = elMedidor.medirTemperatura();
+
+  elPublicador.publicarTemperaturaGasId( valorTemperatura, valorGas );
 
   // 
   // prueba para emitir un iBeacon y poner
@@ -170,7 +175,7 @@ void loop () {
   };
 
   // elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( &datos[0], 21 );
-  elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
+  //elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
 
   esperar( 2000 );
 
