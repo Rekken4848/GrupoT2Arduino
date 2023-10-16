@@ -125,7 +125,7 @@ public:
 	//
 	//
 	(*this).detenerAnuncio();
-	
+
 	//
 	// creo el beacon 
 	//

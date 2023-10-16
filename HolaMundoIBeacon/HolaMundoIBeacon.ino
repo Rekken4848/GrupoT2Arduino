@@ -2,8 +2,8 @@
 
 // --------------------------------------------------------------
 //
-// Jordi Bataller i Mascarell
-// 2019-07-07
+// Hugo Martin Escrihuela
+// 08-10-2023
 //
 // --------------------------------------------------------------
 
@@ -130,7 +130,6 @@ void loop () {
   elPuerto.escribir( cont );
   elPuerto.escribir( "\n" );
 
-
   lucecitas();
 
   // 
@@ -156,7 +155,7 @@ void loop () {
   double valorGas = elMedidor.medirCO2();
   double valorTemperatura = elMedidor.medirTemperatura();
 
-  elPublicador.publicarTemperaturaGasId( valorTemperatura, valorGas );
+  elPublicador.publicarTemperaturaGasId( valorTemperatura, valorGas, 1000 );
 
   // 
   // prueba para emitir un iBeacon y poner

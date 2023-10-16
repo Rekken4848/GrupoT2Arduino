@@ -8,27 +8,6 @@
 #ifndef PUBLICADOR_H_INCLUIDO
 #define PUBLICADOR_H_INCLUIDO
 
-// ............................................................
-//   obtenerDispositivoID() --> Texto
-// ............................................................
-char[] obtenerDispositivoID(){
-  // Obtiene el identificador único del chip NRF52840
-  uint32_t uniqueID[3];
-  NRF_FICR->DEVICEID[0] = NRF_FICR->DEVICEID[0] & 0xFFFFFFFC; // Garantiza que el ID sea único
-  uniqueID[0] = NRF_FICR->DEVICEID[0];
-  uniqueID[1] = NRF_FICR->DEVICEID[1];
-  uniqueID[2] = NRF_FICR->DEVICEID[2];
-  
-  // Envía el identificador único por Bluetooth
-  char uniqueIDString[32];
-  snprintf(uniqueIDString, sizeof(uniqueIDString), "%08X%08X%08X", uniqueID[0], uniqueID[1], uniqueID[2]);
-
-  elPuerto.escribir( "\n---- id prueboID(): empieza " );
-  elPuerto.escribir( uniqueIDString );
-  elPuerto.escribir( "\n---- id prueboID(): acaba \n" );
-
-  return uniqueIDString;
-}
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 class Publicador {
@@ -48,8 +27,7 @@ public:
   EmisoraBLE laEmisora {
 	"GTI-3A", //  nombre emisora
 	  0x004c, // fabricanteID (Apple)
-	  //4 // txPower
-    obtenerDispositivoID()
+	  4 // txPower
 	  };
   
   const int RSSI = -53; // por poner algo, de momento no lo uso
@@ -136,13 +114,15 @@ public:
   } // ()
 
   // ............................................................
-  //   publicarTemperaturaGasId() <-- R, R
+  //   publicarTemperaturaGasId() <-- R, R, N
   // ............................................................
   void publicarTemperaturaGasId( double valorTemperatura,
-							double valorGas ) {
+							double valorGas, long tiempoEspera ) {
+  uint16_t valorEnteroTemperatura = valorTemperatura * 100;
+  uint16_t valorEnteroGas = valorGas * 100;
 	(*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, 
-											valorGas,
-											valorTemperatura, // minor
+											valorEnteroGas,
+											valorEnteroTemperatura, // minor
 											(*this).RSSI // rssi
 									);
 	esperar( tiempoEspera );

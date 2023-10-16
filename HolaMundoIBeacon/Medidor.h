@@ -51,7 +51,7 @@ public:
   //   medirTemperatura() --> R
   // .....................................................
   double medirTemperatura() {
-    return -temp(general_code_to_voltage(analogRead(pinVtemp)));
+    return temp(general_code_to_voltage(analogRead(pinVtemp)));
   }              // ()
 
   // .....................................................
