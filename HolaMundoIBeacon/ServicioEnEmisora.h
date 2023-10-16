@@ -1,8 +1,8 @@
 // -*- mode: c++ -*-
 
 // ----------------------------------------------------------
-// Jordi Bataller i Mascarell
-// 2019-07-17
+// Hugo Martin Escrihuela
+// 08-10-2023
 // ----------------------------------------------------------
 #ifndef SERVICIO_EMISORA_H_INCLUIDO
 #define SERVICIO_EMISORA_H_INCLUIDO
@@ -14,6 +14,7 @@
 // ----------------------------------------------------
 // alReves() utilidad
 // pone al revés el contenido de una array en el mismo array
+//   T, N --> alReves() --> T
 // ----------------------------------------------------
 template< typename T >
 T *  alReves( T * p, int n ) {
@@ -28,6 +29,7 @@ T *  alReves( T * p, int n ) {
 } // ()
 
 // ----------------------------------------------------
+//   Texto, N, N --> stringAUint8AlReves() --> N
 // ----------------------------------------------------
 uint8_t * stringAUint8AlReves( const char * pString, uint8_t * pUint, int tamMax ) {
 
@@ -58,6 +60,10 @@ public:
 											   uint8_t * data, uint16_t len); 
   // .........................................................
   // .........................................................
+  //   Empieza la clase Caracteristica
+  // .........................................................
+  // .........................................................
+  
   class Caracteristica {
   private:
 	uint8_t uuidCaracteristica[16] = { // el uuid se copia aquí (al revés) a partir de un string-c
@@ -76,6 +82,7 @@ public:
   public:
 
 	// .........................................................
+  //   Texto --> constructor()
 	// .........................................................
 	Caracteristica( const char * nombreCaracteristica_ )
 	  :
@@ -85,11 +92,14 @@ public:
 	} // ()
 
 	// .........................................................
+  //   Texto, N, SecureMode_t, SecureMode_t, N
+  //   -->
+  //   constructor()
 	// .........................................................
 	Caracteristica( const char * nombreCaracteristica_ ,
 					uint8_t props,
-					BleSecurityMode permisoRead,
-					BleSecurityMode permisoWrite, 
+					SecureMode_t permisoRead,
+					SecureMode_t permisoWrite, 
 					uint8_t tam ) 
 	  :
 	  Caracteristica( nombreCaracteristica_ ) // llamada al otro constructor
@@ -101,20 +111,27 @@ public:
 	// .........................................................
 	// CHR_PROPS_WRITE , CHR_PROPS_READ ,  CHR_PROPS_NOTIFY 
 	// .........................................................
+  // .........................................................
+	//   N --> asignarPropiedades()
+	// .........................................................
 	void asignarPropiedades ( uint8_t props ) {
 	  // no puedo escribir AUN si el constructor llama a esto: Serial.println( " laCaracteristica.setProperties( props ); ");
 	  (*this).laCaracteristica.setProperties( props );
 	} // ()
 
 	// .........................................................
-	// BleSecurityMode::SECMODE_OPEN  , BleSecurityMode::SECMODE_NO_ACCESS
+	// SecureMode_t::SECMODE_OPEN  , SecureMode_t::SECMODE_NO_ACCESS
 	// .........................................................
-	void asignarPermisos( BleSecurityMode permisoRead, BleSecurityMode permisoWrite ) {
+  // .........................................................
+	//   SecureMode_t, SecureMode_t --> asignarPermisos()
+	// .........................................................
+	void asignarPermisos( SecureMode_t permisoRead, SecureMode_t permisoWrite ) {
 	  // no puedo escribir AUN si el constructor llama a esto: Serial.println( "laCaracteristica.setPermission( permisoRead, permisoWrite ); " );
 	  (*this).laCaracteristica.setPermission( permisoRead, permisoWrite );
 	} // ()
 
 	// .........................................................
+	//   N --> asignarTamanyoDatos()
 	// .........................................................
 	void asignarTamanyoDatos( uint8_t tam ) {
 	  // no puedo escribir AUN si el constructor llama a esto: Serial.print( " (*this).laCaracteristica.setFixedLen( tam = " );
@@ -125,10 +142,13 @@ public:
 
   public:
 	// .........................................................
+  //   N, SecureMode_t, SecureMode_t, N
+  //   -->
+  //   asignarPropiedadesPermisosYTamanyoDatos()
 	// .........................................................
 	void asignarPropiedadesPermisosYTamanyoDatos( uint8_t props,
-												 BleSecurityMode permisoRead,
-												 BleSecurityMode permisoWrite, 
+												 SecureMode_t permisoRead,
+												 SecureMode_t permisoWrite, 
 												 uint8_t tam ) {
 	  asignarPropiedades( props );
 	  asignarPermisos( permisoRead, permisoWrite );
@@ -137,6 +157,7 @@ public:
 												 
 
 	// .........................................................
+  //   Texto --> escribirDatos() --> N
 	// .........................................................
 	uint16_t escribirDatos( const char * str ) {
 	  // Serial.print( " return (*this).laCaracteristica.write( str  = " );
@@ -150,6 +171,7 @@ public:
 	} // ()
 
 	// .........................................................
+  //   Texto --> notificarDatos() --> N
 	// .........................................................
 	uint16_t notificarDatos( const char * str ) {
 	  
@@ -159,12 +181,16 @@ public:
 	} //  ()
 
 	// .........................................................
+  //   CallbackCaracteristicaEscrita
+  //   -->
+  //   instalarCallbackCaracteristicaEscrita()
 	// .........................................................
 	void instalarCallbackCaracteristicaEscrita( CallbackCaracteristicaEscrita cb ) {
 	  (*this).laCaracteristica.setWriteCallback( cb );
 	} // ()
 
 	// .........................................................
+  //   activar()
 	// .........................................................
 	void activar() {
 	  err_t error = (*this).laCaracteristica.begin();
@@ -174,8 +200,11 @@ public:
 
   }; // class Caracteristica
   
-  // --------------------------------------------------------
-  // --------------------------------------------------------
+  // .........................................................
+  // .........................................................
+  //   Acaba la clase Caracteristica
+  // .........................................................
+  // .........................................................
 private:
   
   uint8_t uuidServicio[16] = { // el uuid se copia aquí (al revés) a partir de un string-c
@@ -199,6 +228,7 @@ private:
 public:
   
   // .........................................................
+  //   Texto --> ServicioEnEmisora()
   // .........................................................
   ServicioEnEmisora( const char * nombreServicio_ )
 	:
@@ -208,6 +238,7 @@ public:
   } // ()
   
   // .........................................................
+  //   escribeUUID()
   // .........................................................
   void escribeUUID() {
 	Serial.println ( "**********" );
@@ -218,12 +249,14 @@ public:
   } // ()
 
   // .........................................................
+  //   Caracteristica --> anyadirCaracteristica()
   // .........................................................
   void anyadirCaracteristica( Caracteristica & car ) {
 	(*this).lasCaracteristicas.push_back( & car );
   } // ()
 
   // .........................................................
+  //   activarServicio()
   // .........................................................
   void activarServicio( ) {
 	// entiendo que al llegar aquí ya ha sido configurado
@@ -240,6 +273,7 @@ public:
   } // ()
 
   // .........................................................
+  //   operador() --> BLEService
   // .........................................................
   operator BLEService&() {
 	// "conversión de tipo": si pongo esta clase en un sitio donde necesitan un BLEService
@@ -254,4 +288,3 @@ public:
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 // ----------------------------------------------------------
-

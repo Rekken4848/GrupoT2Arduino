@@ -1,7 +1,8 @@
 // -*- mode: c++ -*-
 
 // --------------------------------------------------------------
-// Jordi Bataller i Mascarell
+// Hugo Martin Escrihuela
+// 08-10-2023
 // --------------------------------------------------------------
 
 #ifndef PUBLICADOR_H_INCLUIDO
@@ -44,6 +45,7 @@ public:
   };
 
   // ............................................................
+  //   constructor()
   // ............................................................
   Publicador( ) {
 	// ATENCION: no hacerlo aquí. (*this).laEmisora.encenderEmisora();
@@ -51,12 +53,14 @@ public:
   } // ()
 
   // ............................................................
+  //   encenderEmisora()
   // ............................................................
   void encenderEmisora() {
 	(*this).laEmisora.encenderEmisora();
   } // ()
 
   // ............................................................
+  //   publicarCO2() --> N, N, N
   // ............................................................
   void publicarCO2( int16_t valorCO2, uint8_t contador,
 					long tiempoEspera ) {
@@ -93,6 +97,7 @@ public:
   } // ()
 
   // ............................................................
+  //   publicarTemperatura() --> N, N, N
   // ............................................................
   void publicarTemperatura( int16_t valorTemperatura,
 							uint8_t contador, long tiempoEspera ) {

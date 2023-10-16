@@ -1,9 +1,9 @@
 // -*- mode: c++ -*-
 
-// ----------------------------------------------------------
-// Jordi Bataller i Mascarell
-// 2019-07-07
-// ----------------------------------------------------------
+// --------------------------------------------------------------
+// Hugo Martin Escrihuela
+// 08-10-2023
+// --------------------------------------------------------------
 #ifndef EMISORA_H_INCLUIDO
 #define EMISORA_H_INCLUIDO
 
@@ -32,11 +32,13 @@ private:
 public:
 
   // .........................................................
+
   // .........................................................
   using CallbackConexionEstablecida = void ( uint16_t connHandle );
   using CallbackConexionTerminada = void ( uint16_t connHandle, uint8_t reason);
 
   // .........................................................
+  //   Texto, N, N --> constructor()
   // .........................................................
   EmisoraBLE( const char * nombreEmisora_, const uint16_t fabricanteID_,
 			  const int8_t txPower_ ) 
@@ -71,6 +73,7 @@ public:
   */
 	
   // .........................................................
+  //   encenderEmisora()
   // .........................................................
   void encenderEmisora() {
 	// Serial.println ( "Bluefruit.begin() " );
@@ -81,6 +84,9 @@ public:
   } // ()
 
   // .........................................................
+  //   CallbackConexionEstablecida,CallbackConexionEstablecida
+  //   -->
+  //   encenderEmisora()
   // .........................................................
   void encenderEmisora( CallbackConexionEstablecida cbce,
 						CallbackConexionTerminada cbct ) {
@@ -93,6 +99,7 @@ public:
   } // ()
 
   // .........................................................
+  //   detenerAnuncio()
   // .........................................................
   void detenerAnuncio() {
 
@@ -104,13 +111,14 @@ public:
   }  // ()
   
   // .........................................................
-  // estaAnunciando() -> Boleano
+  //   estaAnunciando() -> VoF
   // .........................................................
   bool estaAnunciando() {
 	return Bluefruit.Advertising.isRunning();
   } // ()
 
   // .........................................................
+  //   N, N, N, N --> emitirAnuncioIBeacon()
   // .........................................................
   void emitirAnuncioIBeacon( uint8_t * beaconUUID, int16_t major, int16_t minor, uint8_t rssi ) {
 
@@ -200,6 +208,10 @@ public:
 
 	const uint8_t tamanyoCarga = strlen( carga );
   */
+
+  // .........................................................
+  //   Texto, N --> emitirAnuncioIBeaconLibre()
+  // .........................................................
   void emitirAnuncioIBeaconLibre( const char * carga, const uint8_t tamanyoCarga ) {
 
 	(*this).detenerAnuncio(); 
@@ -261,6 +273,7 @@ public:
   } // ()
 
   // .........................................................
+  //   ServicioEnEmisora --> anyadirServicio() --> VoF
   // .........................................................
   bool anyadirServicio( ServicioEnEmisora & servicio ) {
 
@@ -280,11 +293,22 @@ public:
 
   
   // .........................................................
+  //   ServicioEnEmisora
+  //   -->
+  //   anyadirServicioConSusCaracteristicas()
+  //   -->
+  //   VoF
   // .........................................................
   bool anyadirServicioConSusCaracteristicas( ServicioEnEmisora & servicio ) { 
 	return (*this).anyadirServicio( servicio );
   } // 
 
+  // .........................................................
+  //   ServicioEnEmisora, Caracteristica, T
+  //   -->
+  //   anyadirServicioConSusCaracteristicas()
+  //   -->
+  //   VoF
   // .........................................................
   template <typename ... T>
   bool anyadirServicioConSusCaracteristicas( ServicioEnEmisora & servicio,
@@ -297,6 +321,12 @@ public:
 	
   } // ()
 
+  // .........................................................
+  //   ServicioEnEmisora, T
+  //   -->
+  //   anyadirServicioConSusCaracteristicasYActivar()
+  //   -->
+  //   VoF
   // .........................................................
   template <typename ... T>
   bool anyadirServicioConSusCaracteristicasYActivar( ServicioEnEmisora & servicio,
@@ -312,18 +342,25 @@ public:
   } // ()
 
   // .........................................................
+  //   CallbackConexionEstablecida
+  //   -->
+  //   instalarCallbackConexionEstablecida()
   // .........................................................
   void instalarCallbackConexionEstablecida( CallbackConexionEstablecida cb ) {
 	Bluefruit.Periph.setConnectCallback( cb );
   } // ()
 
   // .........................................................
+  //   CallbackConexionTerminada
+  //   -->
+  //   instalarCallbackConexionTerminada()
   // .........................................................
   void instalarCallbackConexionTerminada( CallbackConexionTerminada cb ) {
 	Bluefruit.Periph.setDisconnectCallback( cb );
   } // ()
 
   // .........................................................
+  //   N --> getConexion() --> BLEConnection
   // .........................................................
   BLEConnection * getConexion( uint16_t connHandle ) {
 	return Bluefruit.Connection( connHandle );
