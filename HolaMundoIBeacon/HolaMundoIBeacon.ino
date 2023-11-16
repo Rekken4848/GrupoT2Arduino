@@ -64,7 +64,7 @@ void inicializarPlaquita () {
 // --------------------------------------------------------------
 void setup() {
 
-  Globales::elPuerto.esperarDisponible();
+  //Globales::elPuerto.esperarDisponible();
 
   // 
   // 
@@ -91,7 +91,7 @@ void setup() {
   // 
   esperar( 1000 );
 
-  Globales::elPuerto.escribir( "---- setup(): fin ---- \n " );
+  //Globales::elPuerto.escribir( "---- setup(): fin ---- \n " );
 
 } // setup ()
 
@@ -126,9 +126,9 @@ void loop () {
 
   cont++;
 
-  elPuerto.escribir( "\n---- loop(): empieza " );
-  elPuerto.escribir( cont );
-  elPuerto.escribir( "\n" );
+  //elPuerto.escribir( "\n---- loop(): empieza " );
+  //elPuerto.escribir( cont );
+  //elPuerto.escribir( "\n" );
 
   lucecitas();
 
@@ -155,7 +155,7 @@ void loop () {
   double valorGas = elMedidor.medirCO2();
   double valorTemperatura = elMedidor.medirTemperatura();
 
-  elPublicador.publicarTemperaturaGasId( valorTemperatura, valorGas, 1000 );
+  elPublicador.publicarTemperaturaGasId( 1, 260, 1000 );
 
   // 
   // prueba para emitir un iBeacon y poner
@@ -183,9 +183,9 @@ void loop () {
   // 
   // 
   // 
-  elPuerto.escribir( "---- loop(): acaba **** " );
-  elPuerto.escribir( cont );
-  elPuerto.escribir( "\n" );
+  //elPuerto.escribir( "---- loop(): acaba **** " );
+  //elPuerto.escribir( cont );
+  //elPuerto.escribir( "\n" );
   
 } // loop ()
 // --------------------------------------------------------------

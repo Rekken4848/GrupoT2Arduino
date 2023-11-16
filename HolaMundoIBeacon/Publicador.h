@@ -118,11 +118,11 @@ public:
   // ............................................................
   void publicarTemperaturaGasId( double valorTemperatura,
 							double valorGas, long tiempoEspera ) {
-  uint16_t valorEnteroTemperatura = valorTemperatura * 100;
-  uint16_t valorEnteroGas = valorGas * 100;
+  uint16_t valorEnteroTemperatura = valorTemperatura; //*100
+  uint16_t valorEnteroGas = valorGas;//*100
 	(*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, 
-											valorEnteroGas,
-											valorEnteroTemperatura, // minor
+											valorEnteroTemperatura,
+											valorEnteroGas, // minor
 											(*this).RSSI // rssi
 									);
 	esperar( tiempoEspera );
