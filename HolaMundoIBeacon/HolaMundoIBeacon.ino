@@ -155,8 +155,9 @@ void loop () {
   double valorGas = elMedidor.medirCO2();
   double valorTemperatura = elMedidor.medirTemperatura();
 
-  elPublicador.publicarTemperaturaGasId( 1, 260, 1000 );
-
+  //elPublicador.publicarTemperaturaGasId( valorGas, valorTemperatura, 1000 );
+  //elPublicador.publicarTemperaturaGasId( 1, 260, 1000 );
+  elPublicador.publicarValorConTipo( 48, "O2", 1000 );
   // 
   // prueba para emitir un iBeacon y poner
   // en la carga (21 bytes = uuid 16 major 2 minor 2 txPower 1 )
