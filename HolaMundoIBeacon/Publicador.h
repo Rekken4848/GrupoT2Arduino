@@ -118,8 +118,8 @@ public:
   // ............................................................
   void publicarTemperaturaGasId( double valorTemperatura,
 							double valorGas, long tiempoEspera ) {
-  uint16_t valorEnteroTemperatura = valorTemperatura*100;
-  uint16_t valorEnteroGas = valorGas*100;
+  uint16_t valorEnteroTemperatura = valorTemperatura;//*100;
+  uint16_t valorEnteroGas = valorGas;//*100;
 	(*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, 
 											valorEnteroTemperatura,
 											valorEnteroGas, // minor
@@ -133,7 +133,7 @@ public:
   //   publicarValorConTipo() <-- R, Texto, N
   // ............................................................
   void publicarValorConTipo( double valor,
-							String tipoValor, long tiempoEspera ) {
+							uint16_t tipoValor, long tiempoEspera ) {
   uint16_t valorEntero = valor*100;
 	(*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, 
 											valorEntero,
