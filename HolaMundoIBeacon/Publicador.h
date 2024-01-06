@@ -130,7 +130,7 @@ public:
 	(*this).laEmisora.detenerAnuncio();
   } // ()
   // ............................................................
-  //   publicarValorConTipo() <-- R, Texto, N
+  //   publicarValorConTipo() <-- R, N, N
   // ............................................................
   void publicarValorConTipo( double valor,
 							uint16_t tipoValor, long tiempoEspera ) {

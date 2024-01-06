@@ -44,15 +44,16 @@ public:
   //   medirCO2() --> R
   // .....................................................
   double medirCO2() {
-    return concentracionGas(general_code_to_voltage(analogRead(pinVgas)), general_code_to_voltage(analogRead(pinVref)));
-  }  // ()
+    double Vmedida = obtenerVmedida(general_code_to_voltage(analogRead(pinVgas)), general_code_to_voltage(analogRead(pinVref)));
+    return obtenerConcentracion(Vmedida);  //En ppm
+  }                                        // ()
 
   // .....................................................
   //   medirTemperatura() --> R
   // .....................................................
   double medirTemperatura() {
     return temp(general_code_to_voltage(analogRead(pinVtemp)));
-  }              // ()
+  }  // ()
 
   // .....................................................
   //   N --> general_code_to_voltage() --> R
@@ -91,7 +92,24 @@ public:
 
     return ozoneConcentration;
   }
+
+  // .....................................................
+  //   R, R --> obtenerVmedida() --> R
+  // .....................................................
+  double obtenerVmedida(double Vgas, double Vref) {
+    return Vgas - Vref;
+  }
+
+// .....................................................
+  //   R --> obtenerConcentracion() --> R
+  // .....................................................
+  double obtenerConcentracion(double Vmedida) {
+    double sens = 48.31;
+    return abs((Vmedida) / (sens * 499 * pow(10, -6)));
+  }
 };  // class
+
+
 
 // ------------------------------------------------------
 // ------------------------------------------------------
